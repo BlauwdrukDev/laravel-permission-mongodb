@@ -2,6 +2,175 @@
 
 All notable changes to `laravel-permission` will be documented in this file
 
+## 7.2.4 - 2026-03-17
+
+### What's Changed
+
+* Internals only.
+* Bump ramsey/composer-install from 3 to 4 by @dependabot[bot] in https://github.com/spatie/laravel-permission/pull/2936
+
+**Full Changelog**: https://github.com/spatie/laravel-permission/compare/7.2.3...7.2.4
+
+## 6.25.0 - 2026-03-17
+
+### What's Changed
+
+* Add Laravel 13 compatibility to old branch, so that 3rd party packages can support L13 without urgent upgrading
+* Convert test suite from PHPUnit to Pest by @freekmurze in https://github.com/spatie/laravel-permission/pull/2912
+
+**Full Changelog**: https://github.com/spatie/laravel-permission/compare/6.24.1...6.25.0
+
+## 7.2.3 - 2026-02-23
+
+- Update config comments to point to new v7 event class names
+
+## 7.2.2 - 2026-02-22
+
+### What's Changed
+
+* Clear wildcard permission index when assigning or removing roles by @freekmurze in https://github.com/spatie/laravel-permission/pull/2925
+
+**Full Changelog**: https://github.com/spatie/laravel-permission/compare/7.2.1...7.2.2
+
+## 7.2.1 - 2026-02-21
+
+### What's Changed
+
+- Add Laravel 13 support
+- Upgrade to laravel/passport ^13.0
+- Drop prefer-lowest from CI matrix
+
+## 7.2.0 - 2026-02-18
+
+### What's Changed
+
+* Fix: do not treat string '0' as empty role/permission input by @laraib15 in https://github.com/spatie/laravel-permission/pull/2916
+
+### New Contributors
+
+* @laraib15 made their first contribution in https://github.com/spatie/laravel-permission/pull/2916
+
+**Full Changelog**: https://github.com/spatie/laravel-permission/compare/7.1.0...7.2.0
+
+## 7.1.0 - 2026-02-14
+
+### What's Changed
+
+* [v7] Bring back support for PHP 8.3 by @ssw1cblarrion in https://github.com/spatie/laravel-permission/pull/2918
+
+### New Contributors
+
+* @ssw1cblarrion made their first contribution in https://github.com/spatie/laravel-permission/pull/2918
+
+**Full Changelog**: https://github.com/spatie/laravel-permission/compare/7.0.0...7.1.0
+
+## 7.0.0 - 2026-02-11
+
+### Modernize codebase for v7
+
+The aim for v7 is to modernize the codebase while keeping the upgrade path easy. Modern PHP/Laravel features, Pest tests, but no big architectural changes. A future v8 could then tackle larger changes and streamline the package more fundamentally.
+
+#### Version requirements
+
+- Requires PHP ^8.4 and Laravel ^12.0
+- Test suite uses Pest ^3.0
+
+#### Service provider
+
+- Converted to `PackageServiceProvider` from `spatie/laravel-package-tools`
+- Removed Lumen support
+
+#### Class renames
+
+- Event classes now have an `Event` suffix (`PermissionAttached` → `PermissionAttachedEvent`, etc.)
+- Command classes now have a `Command` suffix (`CacheReset` → `CacheResetCommand`, etc.)
+
+#### Type safety
+
+- Added return types and parameter types throughout traits, middleware, exceptions, contracts, and commands
+
+#### Code modernization
+
+- `is_a($this, X::class)` → `$this instanceof X`
+- `get_class($obj)` → `$obj::class`
+- `strpos($x, $y) !== false` → `str_contains($x, $y)`
+- Constructor promotion in `WildcardPermission`
+- Proper `use` imports for global classes
+
+#### Cleanup
+
+- Removed deprecated `clearClassPermissions()` method
+- Removed `__construct` from `Wildcard` contract
+- Modernized migration stubs
+
+#### Testing
+
+- Converted entire test suite from PHPUnit to Pest (#2912)
+
+**Full Changelog**: https://github.com/spatie/laravel-permission/compare/6.24.1...7.0.0
+
+## 6.24.1 - 2026-02-09
+
+### What's Changed
+
+* Add team support to permission:assign-role command by @freekmurze in https://github.com/spatie/laravel-permission/pull/2910
+
+**Full Changelog**: https://github.com/spatie/laravel-permission/compare/6.24.0...6.24.1
+
+## 6;24.1 - 2026-02-09
+
+### What's Changed
+
+* Add team support to permission:assign-role command by @freekmurze in https://github.com/spatie/laravel-permission/pull/2910
+
+**Full Changelog**: https://github.com/spatie/laravel-permission/compare/6.24.0...6;24.1
+
+## 6.24.0 - 2025-12-13
+
+### What's Changed
+
+* Add BackedEnum Support to RoleOrPermissionMiddleware by @imhayatunnabi in https://github.com/spatie/laravel-permission/pull/2890
+* Add Missing roleOrPermission() route macro by @imhayatunnabi in https://github.com/spatie/laravel-permission/pull/2893
+* PHP 8.5: Fix deprecated usage of `null` as array key by @jnoordsij in https://github.com/spatie/laravel-permission/pull/2904
+
+### Internals/Testing
+
+* Skip prefer-lowest dependency version for Laravel 11 by @drbyte in https://github.com/spatie/laravel-permission/pull/2903
+* Bump actions/checkout from 5 to 6 by @dependabot[bot] in https://github.com/spatie/laravel-permission/pull/2901
+
+**Full Changelog**: https://github.com/spatie/laravel-permission/compare/6.23.0...6.24.0
+
+## 6.23.0 - 2025-11-03
+
+### What's Changed
+
+* Performance enhancement: Reduce unnecessary container resolution calls by @imhayatunnabi in https://github.com/spatie/laravel-permission/pull/2889
+
+**Full Changelog**: https://github.com/spatie/laravel-permission/compare/6.22.0...6.23.0
+
+## 6.22.0 - 2025-10-27
+
+### What's Changed
+
+* Dispatch RoleDetached on syncRoles when events are enabled by @josedaian in https://github.com/spatie/laravel-permission/pull/2869
+* Refactor exception handling in migration stub by @alisalehi1380 in https://github.com/spatie/laravel-permission/pull/2886
+* Fix TOCTOU race condition in permission loading for concurrent (Octane etc) environments by @imhayatunnabi in https://github.com/spatie/laravel-permission/pull/2883
+* Add assign-role command by @sediqzada94 in https://github.com/spatie/laravel-permission/pull/2834
+* Test PHP 8.5 by @erikn69 in https://github.com/spatie/laravel-permission/pull/2880
+* Bump stefanzweifel/git-auto-commit-action from 6 to 7 by @dependabot[bot] in https://github.com/spatie/laravel-permission/pull/2882
+* Update issue template by @AlexVanderbist in https://github.com/spatie/laravel-permission/pull/2875
+* Bump actions/checkout from 4 to 5 by @dependabot[bot] in https://github.com/spatie/laravel-permission/pull/2870
+* Quick Panel (TALL Flowbite Starter Kit) by @aliqasemzadeh in https://github.com/spatie/laravel-permission/pull/2881
+
+### New Contributors
+
+* @josedaian made their first contribution in https://github.com/spatie/laravel-permission/pull/2869
+* @alisalehi1380 made their first contribution in https://github.com/spatie/laravel-permission/pull/2886
+* @imhayatunnabi made their first contribution in https://github.com/spatie/laravel-permission/pull/2883
+* @sediqzada94 made their first contribution in https://github.com/spatie/laravel-permission/pull/2834
+
+**Full Changelog**: https://github.com/spatie/laravel-permission/compare/6.21.0...6.22.0
+
 ## 6.21.0 - 2025-07-23
 
 ### What's Changed
@@ -1068,6 +1237,19 @@ The following changes are not "breaking", but worth making the updates to your a
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
 1. Also this is a good time to point out that now with v2.25.0 and v2.26.0 most permission-cache-reset scenarios may no longer be needed in your app, so it's worth reviewing those cases, as you may gain some app speed improvement by removing unnecessary cache resets.
 
@@ -1115,6 +1297,19 @@ The following changes are not "breaking", but worth making the updates to your a
 @elserole('roleB')
  // user hasRole 'roleB' but not 'roleA'
 @endrole
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
